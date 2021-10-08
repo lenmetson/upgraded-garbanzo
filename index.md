@@ -1,4 +1,6 @@
-## Welcome to GitHub Pages
+## Welcome to Len's Own Page
+
+Here's what I did for DS105.
 
 You can use the [editor on GitHub](https://github.com/lenmetson/upgraded-garbanzo/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
