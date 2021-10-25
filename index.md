@@ -18,7 +18,7 @@ For this mini-project, we will restrict our analysis to variables already contai
 The corpus is stored as an `.rds` file. This stores a single R object which means that the data is already prepared for use in R.
 
 ## Preparing the data in R
-First we need to install our packages. 
+First we need to install our packages.
 ```
 if(!require("tidyverse")) {install.packages("tidyverse"); library("tidyverse")}
 
