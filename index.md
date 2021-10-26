@@ -11,7 +11,7 @@ In this tutorial, I won't go into downloading and setting up R Studio, these are
 * [Setting up R Studio](https://rstudio-education.github.io/hopr/starting.html)
 
 ## Getting the Data
-First we need to source some data. Pre-scraped dataset of various Hansards are available online. We will focus on examples from the UK. Specifically, we will use the parlScot dataset (Braby and Stewart, 2021) available by following the following link: [https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/EQ9WBE]. This data set contains speeches from the Scottish Parliament made between 1999 and 2021.
+First we need to source some data. Pre-scraped dataset of various Hansards are available online. We will focus on examples from the UK. Specifically, we will use the parlScot dataset (Braby and Stewart, 2021) available by following the following link: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/EQ9WBE. This data set contains speeches from the Scottish Parliament made between 1999 and 2021.
 
 Download the file 'parlScot_coms_v1.1.rds' and save it to a folder on your computer.
 
