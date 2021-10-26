@@ -11,12 +11,12 @@ In this tutorial, I won't go into downloading and setting up R Studio, these are
 * [Setting up R Studio](https://rstudio-education.github.io/hopr/starting.html)
 
 ## Getting the Data
-First we need to source some data. Pre-scraped dataset of various Hansards are available online. We will focus on examples from the UK. Specifically, we will use the parlScot dataset (Braby and Stewart, 2021) available by following the following link: (https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/EQ9WBE). This data set contains speeches from the Scottish Parliament made between 1999 and 2021.
+First we need to source some data. Pre-scraped dataset of various Hansards are available online. We will focus on examples from the UK. Specifically, we will use the parlScot dataset (Braby and Stewart, 2021) available by following the following link: [https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/EQ9WBE]. This data set contains speeches from the Scottish Parliament made between 1999 and 2021.
 
-Download the file 'parlScot_coms_v1.1.rds' and save it to a
+Download the file 'parlScot_coms_v1.1.rds' and save it to a folder on your computer.
 
 
-For this mini-project, we will restrict our analysis to variables already contained in the data. We will analyse the corpus using string matching to measure when a Scottish MP (MSP) is referencing their own region or constituency (`constituency` or `region`) in their speech (`speech`). We will then compare whether this matches their "type" (`msp_type`)- i.e. whether they were elected at the constituency or regional level.
+For this mini-project, we will restrict our analysis to variables already contained in the data. We will analyse the corpus using string matching method to measure when a Scottish MP (MSP) is referencing their own region or constituency in their speech. We will then compare whether this matches their "type" - i.e. whether they were elected at the constituency or regional level.
 
 The corpus is stored as an `.rds` file. This stores a single R object which means that the data is already prepared for use in R.
 
