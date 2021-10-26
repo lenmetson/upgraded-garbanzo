@@ -21,7 +21,7 @@ The corpus is stored as an `.rds` file. This stores a single R object which mean
 First we need to install our packages.
 ```
 if(!require("tidyverse")) {install.packages("tidyverse"); library("tidyverse")}
-
+if(!require("here")) {install.packages("here"); library("here")}
 ```
 
 * Installing packages
