@@ -25,6 +25,7 @@ The first thing we need to do is install and load our packages. The following co
 if(!require("tidyverse")) {install.packages("tidyverse"); library("tidyverse")}
 if(!require("here")) {install.packages("here"); library("here")}
 if(!require("rjson")) {install.packages("rjson"); library("rjson")}
+if(!require("ggplot2")) {install.packages("ggplot2"); library("ggplot2")}
 ```
 
 Next, we load in our data. We are using the `here` package to specify file paths. This is so that the script can be run on different operating systems.
@@ -104,6 +105,10 @@ corpus_reg$any_reg_ref <- NA
 corpus_reg$any_reg_ref[corpus_reg$name_ref + corpus_reg$dict_reg_ref >= 1] <- 1
 corpus_reg$any_reg_ref[corpus_reg$name_ref + corpus_reg$dict_reg_ref == 0] <- 0
 
+corpus_con$any_reg_ref <- NA
+corpus_reg$any_con_ref <- NA
+
+# the last two lines make sure there are matching columns
 ```
 
 That's all the string matching done!
@@ -121,4 +126,10 @@ If all went well, the answers for the two lines of code above are:
 * Regional MSP's reference their region in **1.2%** of their speeches
 
 ## Vizualisation
-* What viz, ggplot
+
+The last thing we are going to do is visualise a time trend using ggplot.
+
+First, we need to merge everything back into one dataframe. 
+```
+corpus <- rbind(corpus_con, corpus_reg)
+```
