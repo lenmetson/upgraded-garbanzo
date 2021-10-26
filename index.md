@@ -15,7 +15,6 @@ First we need to source some data. Pre-scraped dataset of various Hansards are a
 
 Download the file 'parlScot_coms_v1.1.rds' and save it to a folder on your computer.
 
-
 For this mini-project, we will restrict our analysis to variables already contained in the data. We will analyse the corpus using string matching method to measure when a Scottish MP (MSP) is referencing their own region or constituency in their speech. We will then compare whether this matches their "type" - i.e. whether they were elected at the constituency or regional level.
 
 The corpus is stored as an `.rds` file. This stores a single R object which means that the data is already prepared for use in R.
@@ -67,9 +66,9 @@ corpus_reg$name_ref <- as.integer(str_detect(corpus_reg$speech, corpus_reg$regio
 mean(corpus_con$name_ref) * 100
 mean(corpus_reg$name_ref) * 100
 ```
-As we can see from this Constituency MP's mention the name of their constituency in 0.59% of their speeches but region MPs mention the name of their region in 1.20% of their speeches.
+As we can see from this Constituency MP's mention the name of their constituency in **0.59%** of their speeches but region MPs mention the name of their region in **1.20%** of their speeches.
 
-Of course, there is more to geogrpahci representation than saying the name. And it might be hte case that regions are mentioned more any way. We will look at a broader search for geogrpahcial representation when we use our second type of dictionary. First, however, let's check how often Constituency MSP's reference their own region. We will do the same for regional MPs, just to that both data frames have the same varibales so we can merge them later.
+Of course, there is more to geographic representation than saying the name. And it might be the case that regions are mentioned more any way. We will look at a broader search for geographical representation when we use our second type of dictionary. First, however, let's check how often Constituency MSP's reference their own region. We will do the same for regional MPs, just to that both data frames have the same variables so we can merge them later.
 
 ```
 corpus_con$regional_ref <- as.integer(str_detect(corpus_con$speech, corpus_con$region))
@@ -80,12 +79,46 @@ mean(corpus_reg$regional_ref) * 100
 ```
 As we can see, Regional MSP's still mention their Region far more often than Constituency MP's mention their Region.
 
-* **NEXT STEP** second dictionary
+Moving on to our second type of dictionary. The first step is to define the relevant dictionaries. And then we can run the string match for both types of reference. We will run both dictionaries on both types of MSP. Of course, if we were doing this project properly, we would have to come up with theoretical justifications of the words we use, but for the purposes of this exercise, let's keep it simple.
+```
+con_ref_dict <- "my constitu*|our constiu*"
+reg_ref_dict <- "my region*|our region*"
+
+corpus_con$dict_con_ref <- as.integer(str_detect(corpus_con$speech, con_ref_dict))
+corpus_con$dict_reg_ref <- as.integer(str_detect(corpus_con$speech, reg_ref_dict))
+
+corpus_reg$dict_con_ref <- as.integer(str_detect(corpus_reg$speech, con_ref_dict))
+corpus_reg$dict_reg_ref <- as.integer(str_detect(corpus_reg$speech, reg_ref_dict))
+```
+
+The last step on the analysis side of things is to combine these different types of geographical reference into a single variable. For this we will write a function that will print a 1 if the sum of the two string matching variables is 1 or more.
 
 
-* Set dictionary
-* Carry out string match
-* Summarise data  
+```
+corpus_con$any_con_ref <- NA
+corpus_con$any_con_ref[corpus_con$name_ref + corpus_con$dict_con_ref >= 1] <- 1
+corpus_con$any_con_ref[corpus_con$name_ref + corpus_con$dict_con_ref == 0] <- 0
+
+
+corpus_reg$any_reg_ref <- NA
+corpus_reg$any_reg_ref[corpus_reg$name_ref + corpus_reg$dict_reg_ref >= 1] <- 1
+corpus_reg$any_reg_ref[corpus_reg$name_ref + corpus_reg$dict_reg_ref == 0] <- 0
+
+```
+
+That's all the string matching done!
+
+Now lets create a summary of what we found
+
+```
+mean(corpus_con$any_con_ref)*100
+
+mean(corpus_reg$any_reg_ref)*100
+```
+
+If all went well, the answers for the two lines of code above are:
+* Constituency MSP's reference their constituency in **1.5%** of their speeches
+* Regional MSP's reference their region in **1.2%** of their speeches
 
 ## Vizualisation
 * What viz, ggplot
