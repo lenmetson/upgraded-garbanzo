@@ -1,4 +1,4 @@
-# Using Dictionary Matching in Parliamentary Texts
+# Using Dictionary Matching in Scottish Committee Transcripts
 
 ## Why use this method
 
