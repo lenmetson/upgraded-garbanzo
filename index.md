@@ -1,17 +1,17 @@
 # Using Dictionary Matching in Scottish Committee Transcripts
 
-## Why use this method
+In this mini-project, we go through a very quick example of using string matching to analyse texts. The analysis is not comprehensive and is only meant to give some idea of how these things work.
 
 ## Tools - setting up R
 
-In this tutorial, I won't go into downloading and setting up R Studio, these are better explained in other places. I have listed some useful tutorials for getting started. If you follow these, you will be ready to follow along with this mini-project.
+I have listed some useful tutorials for getting started. If you follow these, you will be ready to follow along with this mini-project.
 
 * [Downloading R](https://cran.r-project.org/bin/windows/base/)
 * [Downloading R Studio](https://www.rstudio.com/products/rstudio/download/)
 * [Setting up R Studio](https://rstudio-education.github.io/hopr/starting.html)
 
 ## Getting the Data
-First we need to source some data. Pre-scraped dataset of various Hansards are available online. We will focus on examples from the UK. Specifically, we will use the parlScot dataset (Braby and Stewart, 2021) available by following the following link: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/EQ9WBE. This data set contains speeches from the Scottish Parliament made between 1999 and 2021.
+First we need to source some data. Pre-scraped dataset of various Hansards are available online. We will focus on examples from the UK. Specifically, we will use the parlScot dataset (Braby and Stewart, 2021) available by following the following [link](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/EQ9WBE).
 
 Download the file 'parlScot_coms_v1.1.rds' and save it to a folder on your computer.
 
@@ -124,12 +124,4 @@ mean(corpus_reg$any_reg_ref)*100
 If all went well, the answers for the two lines of code above are:
 * Constituency MSP's reference their constituency in **1.5%** of their speeches
 * Regional MSP's reference their region in **1.2%** of their speeches
-
-## Vizualisation
-
-The last thing we are going to do is visualise a time trend using ggplot.
-
-First, we need to merge everything back into one dataframe. 
-```
-corpus <- rbind(corpus_con, corpus_reg)
 ```
